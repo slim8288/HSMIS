@@ -1,1 +1,3 @@
 rename_pathfiles*.sh
+*.pyc
+__pycache__/

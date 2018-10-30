@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 from glob import glob
-from scipy import signal, stats
-import matplotlib.pyplot as plt
 
 
 def analyzepath(file):
