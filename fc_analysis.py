@@ -1,10 +1,9 @@
 # This is the analysis for the Fiddler's Cove Cochlodinium bloom that uses the generic functions defined in analyzepath.py
 
-# define functions
 from analyzehsmis import analyzepath_folder, analyzecell_folder
 import numpy as np
 import pandas as pd
-from scipy import signal, stats
+from scipy import stats
 import matplotlib.pyplot as plt
 
 
@@ -74,5 +73,5 @@ plt.ylabel('NGDR')
 
 
 # due to sample size, I think you can only do statistics with the first 2 days
-stats.ttest_ind(uave24, uave26, equal_var=True)
-stats.ttest_ind(ngdr24, ngdr26, equal_var=True)
+stats.ttest_ind(path24['uave'], path26['uave'], equal_var=True)
+stats.ttest_ind(path24['ngdr'], path26['ngdr'], equal_var=True)

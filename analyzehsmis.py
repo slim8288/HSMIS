@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from glob import glob
-
+from scipy import signal, stats
 
 def analyzepath(file):
     """ Input: file with the X and Y coordinates from a cell's path (_path.csv)
