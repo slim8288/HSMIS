@@ -64,12 +64,26 @@ treatment = ['control(M)', 'control(W)', 'control(F)',
     'S cope(M1)', 'S cope(R)', 'S cope(T)', 'S cope(M2)',
     'D DMSO', 'D DMSO',
     'D cope', 'D cope']
+treatment1 = ['control', 'control', 'control',
+    'S DMSO', 'S DMSO', 'S DMSO', 'S DMSO',
+    'S cope', 'S cope', 'S cope', 'S cope',
+    'D DMSO', 'D DMSO',
+    'D cope', 'D cope']
 day = [0, 0, 0,
     0, 0, 1, 4,
     0, 0, 1, 4,
     2, 4,
     2, 4]
-#absoluteday = [0, 2, 4, 0, 3, 1, 7, 0, 3, 1, 7, 2, 4, 2, 4]
+date = ['10/15', '10/17', '10/19',
+    '10/15', '10/18', '10/16', '10/22',
+    '10/15', '10/18', '10/16', '10/22',
+    '10/16', '10/18',
+    '10/16', '10/18']
+absoluteday = [0, 2, 4,
+    0, 3, 1, 7,
+    0, 3, 1, 7,
+    2, 4,
+    2, 4]
 labels = []
 for n in range(0, np.shape(treatment)[0]):
     labels.append(treatment[n] + ' ' + str(day[n]))
@@ -78,6 +92,11 @@ tswim_means = [np.mean(df['tswim']) for df in paths]
 lswim_means = [np.mean(df['lswim']) for df in paths]
 uave_means = [np.mean(df['uave']) for df in paths]
 ngdr_means = [np.mean(df['ngdr']) for df in paths]
+
+tswim_stdev = [np.std(df['tswim']) for df in paths]
+lswim_stdev = [np.std(df['lswim']) for df in paths]
+uave_stdev = [np.std(df['uave']) for df in paths]
+ngdr_stdev = [np.std(df['ngdr']) for df in paths]
 
 lswim_sem = [stats.sem(df['lswim']) for df in paths]
 tswim_sem = [stats.sem(df['tswim']) for df in paths]
@@ -160,13 +179,33 @@ plt.ylabel('NGDR')
 
 
 # cell size analysis
-cells = [control1c, control3c, control5c, sdmsoxc, sdmso2c, sdmsoyc, scopexc, scope2c, scopeyc, ddmso3c, ddmso5c, dcope3c, dcope5c]
+cells = [control1c, control3c, control5c,
+    sdmso1c, sdmsoxc, sdmso2c, sdmsoyc, scope1c,
+    scopexc, scope2c, scopeyc, ddmso3c,
+    ddmso5c, dcope3c, dcope5c]
 
 length_means = [np.mean(df['length']) for df in cells]
 width_means = [np.mean(df['width']) for df in cells]
+
+length_stdev = [np.std(df['length']) for df in cells]
+width_stdev = [np.std(df['length']) for df in cells]
 
 length_sem = [stats.sem(df['length']) for df in cells]
 width_sem = [stats.sem(df['width']) for df in cells]
 
 plt.barh(range(0,13), length_means, tick_label=labels, xerr=length_sem)
 plt.xlabel('Cell length (mm)')
+
+
+# summary table
+
+ntracks = [np.shape(sample)[0] for sample in paths]
+
+hsmis = np.transpose(pd.DataFrame([treatment1, date, day, ntracks,
+    length_means, length_stdev, width_means, width_stdev,
+    tswim_means, tswim_stdev, lswim_means, lswim_stdev,
+    uave_means, uave_stdev, ngdr_means, ngdr_stdev]))
+hsmis.columns = ['treatment', 'date', 'days since exposure', 'sample size',
+    'cell length (mm)', 'cell length stdev', 'cell width (mm)', 'cell width stdev',
+    'case duration (s)', 'case duration stdev', 'path length (mm)', 'path length stdev',
+    'path averaged speed (mm/s)', 'path averaged speed stdev', 'NGDR', 'NGDR stdev']
