@@ -22,8 +22,8 @@ cell28 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/
 
 
 # take results from above and combine into lists so that the mean, std, and SEM can be quickly found for each day (because a day has many tracks)
-paths = [path25, path26, path27]
-cells = [cell25, cell26, cell27]
+paths = [path25, path26, path27, path28]
+cells = [cell25, cell26, cell27, cell28]
 dates = ['Day 0', 'Day 1', 'Day 2', 'Day 3']
 
 tswim_means = [np.mean(df['tswim']) for df in paths]
@@ -65,10 +65,10 @@ hsmis.to_csv('/Volumes/GoogleDrive/My Drive/projects/HSMIS/nutrients/nut_summary
 
 
 # plotting
-plt.bar(range(0,3), uave_means, tick_label=dates, yerr=uave_sem)
+plt.bar(range(0,4), uave_means, tick_label=dates, yerr=uave_sem)
 plt.ylabel('Uave (mm/s)')
 
-plt.bar(range(0,3), ngdr_means, tick_label=dates, yerr=ngdr_sem)
+plt.bar(range(0,4), ngdr_means, tick_label=dates, yerr=ngdr_sem)
 plt.ylabel('NGDR')
 
 
