@@ -11,18 +11,20 @@ import matplotlib.pyplot as plt
 path25 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190225/*/*_path.csv')
 path26 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190226/*/*_path.csv')
 path27 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190227/*/*_path.csv')
+path28 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190228/*/*_path.csv')
 
 
 # get cell length and width for four days of data
 cell25 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190225/*/*_focalcell.csv')
 cell26 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190226/*/*_focalcell.csv')
 cell27 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190227/*/*_focalcell.csv')
+cell28 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190228/*/*_focalcell.csv')
 
 
 # take results from above and combine into lists so that the mean, std, and SEM can be quickly found for each day (because a day has many tracks)
 paths = [path25, path26, path27]
 cells = [cell25, cell26, cell27]
-dates = ['Day 0', 'Day 1', 'Day 2']
+dates = ['Day 0', 'Day 1', 'Day 2', 'Day 3']
 
 tswim_means = [np.mean(df['tswim']) for df in paths]
 lswim_means = [np.mean(df['lswim']) for df in paths]
