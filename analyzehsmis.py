@@ -56,8 +56,8 @@ def analyzepath_folder(directory):
     for file in folder:
         results = analyzepath(file)
         tswim.append(results[0])
-        lswim.append(results[1] *0.7/912.020)  # conversion from pixels to mm for 20x lens
-        Uave.append(results[2] *0.7/912.020)
+        lswim.append(results[1] *0.7/964.019)  # conversion from pixels to mm for 20x lens
+        Uave.append(results[2] *0.7/964.019)
         NGDR.append(results[3])
     summary = np.transpose(pd.DataFrame([tswim, lswim, Uave, NGDR]))
     summary.columns = ['tswim', 'lswim', 'uave', 'ngdr']
@@ -77,8 +77,8 @@ def analyzecell_folder(directory):
             length.append(celldata['L'][0] *0.7/912.020)  # conversion from pixels to mm for 20x lens
             width.append(celldata['W'][0] *0.7/912.020)
         else:  # once I started using the macro, this is sufficient
-            length.append(celldata['Roi_Length'][0] *0.7/912.020)
-            width.append(celldata['Roi_Width'][0] *0.7/912.020)
+            length.append(celldata['Roi_Length'][0] *0.7/964.019)
+            width.append(celldata['Roi_Width'][0] *0.7/964.019)
     summary = np.transpose(pd.DataFrame([length, width]))
     summary.columns = ['length', 'width']
     return summary
