@@ -58,7 +58,7 @@ def analyzepath_folder(directory, pixels=912.020, mm=0.7):
     for file in folder:
         results = analyzepath(file)
         tswim.append(results[0])
-        lswim.append(results[1] * mm/pixels)  # conversion from pixels to mm for 20x lens
+        lswim.append(results[1] * mm/pixels)
         Uave.append(results[2] * mm/pixels)
         NGDR.append(results[3])
     summary = np.transpose(pd.DataFrame([tswim, lswim, Uave, NGDR]))
@@ -77,7 +77,7 @@ def analyzecell_folder(directory, pixels=912.020, mm=0.7):
     for file in folder:
         celldata = pd.read_csv(file)
         if 'L' in celldata:  # this first part is only necessary because of the csv formatting that I had done manually at the beginning of the FC analysis
-            length.append(celldata['L'][0] * mm/pixels)  # conversion from pixels to mm for 20x lens
+            length.append(celldata['L'][0] * mm/pixels)
             width.append(celldata['W'][0] * mm/pixels)
         else:  # once I started using the macro, this is sufficient
             length.append(celldata['Roi_Length'][0] * mm/pixels)
