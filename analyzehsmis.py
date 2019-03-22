@@ -44,9 +44,11 @@ def analyzepath(file):
     return tswim, lswim, Uave, NGDR
 
 
-def analyzepath_folder(directory):
-    """ Input: folder with several files of the X and Y coordinates from a cell's path (_path.csv)
-        Output: pandas dataframe with path duration in s, path length in mm, path-averaged speed in mm/s and of net to gross displacement ratio
+def analyzepath_folder(directory, pixels=912.020, mm=0.7):
+    """ Input: folder with several files of the X and Y coordinates from a cell's path (_path.csv), pixels, mm
+               (latter two are for lens conversion; default set to approximate 20x lens)
+        Output: pandas dataframe with path duration in s, path length in mm, path-averaged speed in mm/s, and
+                net to gross displacement ratio
     """
     folder = sorted(glob(directory))  # glob does not order, so if we want entries to match up between analyzepath_folder and analyzecell_folder, needs to be sorted
     tswim = []
@@ -56,16 +58,17 @@ def analyzepath_folder(directory):
     for file in folder:
         results = analyzepath(file)
         tswim.append(results[0])
-        lswim.append(results[1] *0.7/964.019)  # conversion from pixels to mm for 20x lens
-        Uave.append(results[2] *0.7/964.019)
+        lswim.append(results[1] * mm/pixels)  # conversion from pixels to mm for 20x lens
+        Uave.append(results[2] * mm/pixels)
         NGDR.append(results[3])
     summary = np.transpose(pd.DataFrame([tswim, lswim, Uave, NGDR]))
     summary.columns = ['tswim', 'lswim', 'uave', 'ngdr']
     return summary
 
 
-def analyzecell_folder(directory):
-    """ Input: folder with several files of cells' dimensions (_focalcell.csv)
+def analyzecell_folder(directory, pixels=912.020, mm=0.7):
+    """ Input: folder with several files of cells' dimensions (_focalcell.csv), pixels, mm
+               (latter two are for lens conversion; default set to approximate 20x lens)
         Output: pandas dataframe with cell length and width in mm
     """
     folder = sorted(glob(directory))  # glob does not order, so if we want entries to match up between analyzepath_folder and analyzecell_folder, needs to be sorted
@@ -74,11 +77,11 @@ def analyzecell_folder(directory):
     for file in folder:
         celldata = pd.read_csv(file)
         if 'L' in celldata:  # this first part is only necessary because of the csv formatting that I had done manually at the beginning of the FC analysis
-            length.append(celldata['L'][0] *0.7/912.020)  # conversion from pixels to mm for 20x lens
-            width.append(celldata['W'][0] *0.7/912.020)
+            length.append(celldata['L'][0] * mm/pixels)  # conversion from pixels to mm for 20x lens
+            width.append(celldata['W'][0] * mm/pixels)
         else:  # once I started using the macro, this is sufficient
-            length.append(celldata['Roi_Length'][0] *0.7/964.019)
-            width.append(celldata['Roi_Width'][0] *0.7/964.019)
+            length.append(celldata['Roi_Length'][0] * mm/pixels)
+            width.append(celldata['Roi_Width'][0] * mm/pixels)
     summary = np.transpose(pd.DataFrame([length, width]))
     summary.columns = ['length', 'width']
     return summary

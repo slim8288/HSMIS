@@ -1,4 +1,6 @@
-# This is the analysis for the A. minutum copepodamide experiments that uses the generic functions defined in analyzepath.py
+# This is the analysis for the A. minutum copepodamide experiments that uses the generic functions defined in analyzehsmis.py
+
+# Note: the pixel/mm conversion for the lens of this experiment is unknown as of Mar 2019. It's approximately the same as for the FC experiment, but I'm not sure if Houshuo has a more exact number.
 
 from analyzehsmis import analyzepath_folder, analyzecell_folder
 import numpy as np

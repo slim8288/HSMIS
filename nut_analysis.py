@@ -1,4 +1,6 @@
-# This is the analysis for the nutrient replete vs. limited experiment that uses the generic functions defined in analyzepath.py
+# This is the analysis for the nutrient replete vs. limited experiment that uses the generic functions defined in analyzehsmis.py
+
+# lens conversion: 964.019 pixels = 0.7 mm
 
 from analyzehsmis import analyzepath_folder, analyzecell_folder
 import numpy as np
@@ -7,33 +9,32 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 
-# calculate path duration, path length, path-averaged speed, and net to gross displacement ratio for four days of data
-path25 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190225/*/*_path.csv')
-path26 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190226/*/*_path.csv')
-path27 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190227/*/*_path.csv')
-path28 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190228/*/*_path.csv')
-path1 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190301/*/*_path.csv')
-path2 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190302/*/*_path.csv')
-path4 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190304/*/*_path.csv')
-path5 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190305/*/*_path.csv')
-path6 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190306/*/*_path.csv')
-path7 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190307/*/*_path.csv')
-path8 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190308/*/*_path.csv')
+# calculate path duration, path length, path-averaged speed, and net to gross displacement ratio
+path25 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190225/*/*_path.csv', pixels=964.019, mm=0.7)
+path26 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190226/*/*_path.csv', pixels=964.019, mm=0.7)
+path27 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190227/*/*_path.csv', pixels=964.019, mm=0.7)
+path28 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190228/*/*_path.csv', pixels=964.019, mm=0.7)
+path1 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190301/*/*_path.csv', pixels=964.019, mm=0.7)
+path2 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190302/*/*_path.csv', pixels=964.019, mm=0.7)
+path4 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190304/*/*_path.csv', pixels=964.019, mm=0.7)
+path5 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190305/*/*_path.csv', pixels=964.019, mm=0.7)
+path6 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190306/*/*_path.csv', pixels=964.019, mm=0.7)
+path7 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190307/*/*_path.csv', pixels=964.019, mm=0.7)
+path8 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190308/*/*_path.csv', pixels=964.019, mm=0.7)
 
 
-
-# get cell length and width for four days of data
-cell25 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190225/*/*_focalcell.csv')
-cell26 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190226/*/*_focalcell.csv')
-cell27 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190227/*/*_focalcell.csv')
-cell28 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190228/*/*_focalcell.csv')
-cell1 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190301/*/*_focalcell.csv')
-cell2 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190302/*/*_focalcell.csv')
-cell4 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190304/*/*_focalcell.csv')
-cell5 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190305/*/*_focalcell.csv')
-cell6 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190306/*/*_focalcell.csv')
-cell7 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190307/*/*_focalcell.csv')
-cell8 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190308/*/*_focalcell.csv')
+# get cell length and width
+cell25 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190225/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell26 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190226/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell27 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190227/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell28 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190228/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell1 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190301/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell2 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190302/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell4 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190304/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell5 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190305/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell6 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190306/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell7 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190307/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell8 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190308/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 
 
 # take results from above and combine into lists so that the mean, std, and SEM can be quickly found for each day (because a day has many tracks)
@@ -83,15 +84,6 @@ hsmis.columns = ['date', 'sample size',
 plt.bar(range(0, np.shape(uave_means)[0]), uave_means, tick_label=dates, yerr=uave_sem)
 plt.ylabel('Uave (mm/s)')
 plt.show()
-
-
-
-
-
-################# end
-
-
-
 
 plt.bar(range(0, np.shape(ngdr_means)[0]), ngdr_means, tick_label=dates, yerr=ngdr_sem)
 plt.ylabel('NGDR')

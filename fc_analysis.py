@@ -1,4 +1,6 @@
-# This is the analysis for the Fiddler's Cove Cochlodinium bloom that uses the generic functions defined in analyzepath.py
+# This is the analysis for the Fiddler's Cove Cochlodinium bloom that uses the generic functions defined in analyzehsmis.py
+
+# Note: the pixel/mm conversion for the lens of this experiment is the default value in analyzehsmis.py 
 
 from analyzehsmis import analyzepath_folder, analyzecell_folder
 import numpy as np
