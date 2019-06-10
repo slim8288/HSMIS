@@ -1,4 +1,4 @@
-# This is the analysis for the nutrient replete vs. limited experiment that uses the generic functions defined in analyzehsmis.py
+# This is the analysis for the March 2019 nutrient replete vs. limited experiment that uses the generic functions defined in analyzehsmis.py
 
 # lens conversion: 964.019 pixels = 0.7 mm
 
