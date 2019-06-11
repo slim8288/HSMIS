@@ -13,17 +13,19 @@ import matplotlib.pyplot as plt
 path4 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190604/*/*_path.csv', pixels=964.019, mm=0.7)
 path6 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190606/*/*_path.csv', pixels=964.019, mm=0.7)
 path7 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190607/*/*_path.csv', pixels=964.019, mm=0.7)
+path10 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190610/*/*_path.csv', pixels=964.019, mm=0.7)
 
 
 # get cell length and width
 cell4 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190604/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 cell6 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190606/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 cell7 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190607/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell10 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190610/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 
 # take results from above and combine into lists so that the mean, std, and SEM can be quickly found for each day (because a day has many tracks)
-paths = [path4, path6, path7]
-cells = [cell4, cell6, cell7]
-dates = ['day0 inoc', 'day2 f/40', 'day3 f/2']
+paths = [path4, path6, path7, path10]
+cells = [cell4, cell6, cell7, cell10]
+dates = ['day0 inoc', 'day2 f/40', 'day3 f/2', 'day6 f/40']
 
 tswim_means = [np.mean(df['tswim']) for df in paths]
 lswim_means = [np.mean(df['lswim']) for df in paths]
