@@ -14,6 +14,9 @@ path4 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/2
 path6 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190606/*/*_path.csv', pixels=964.019, mm=0.7)
 path7 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190607/*/*_path.csv', pixels=964.019, mm=0.7)
 path10 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190610/*/*_path.csv', pixels=964.019, mm=0.7)
+path11 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190611/*/*_path.csv', pixels=964.019, mm=0.7)
+path12 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612/*/*_path.csv', pixels=964.019, mm=0.7)
+path12dark = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612dark/*/*_path.csv', pixels=964.019, mm=0.7)
 
 
 # get cell length and width
@@ -21,11 +24,15 @@ cell4 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/2
 cell6 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190606/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 cell7 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190607/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 cell10 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190610/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell11 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190611/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell12 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell12dark = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612dark/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+
 
 # take results from above and combine into lists so that the mean, std, and SEM can be quickly found for each day (because a day has many tracks)
-paths = [path4, path6, path7, path10]
-cells = [cell4, cell6, cell7, cell10]
-dates = ['day0 inoc', 'day2 f/40', 'day3 f/2', 'day6 f/40']
+paths = [path4, path6, path7, path10, path11, path12, path12dark]
+cells = [cell4, cell6, cell7, cell10, cell11, cell12, cell12dark]
+dates = ['day0 inoc', 'day2 f/40', 'day3 f/2', 'day6 f/40', 'day7 f/2', 'day8 f/40', 'day8 f/40 dark']
 
 tswim_means = [np.mean(df['tswim']) for df in paths]
 lswim_means = [np.mean(df['lswim']) for df in paths]
