@@ -17,6 +17,10 @@ path10 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/
 path11 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190611/*/*_path.csv', pixels=964.019, mm=0.7)
 path12 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612/*/*_path.csv', pixels=964.019, mm=0.7)
 path12dark = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612dark/*/*_path.csv', pixels=964.019, mm=0.7)
+path13 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190613/*/*_path.csv', pixels=964.019, mm=0.7)
+path13dark = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190613dark/*/*_path.csv', pixels=964.019, mm=0.7)
+path14 = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190614/*/*_path.csv', pixels=964.019, mm=0.7)
+path14dark = analyzepath_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190614dark/*/*_path.csv', pixels=964.019, mm=0.7)
 
 
 # get cell length and width
@@ -27,12 +31,19 @@ cell10 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/
 cell11 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190611/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 cell12 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 cell12dark = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190612dark/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell13 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190613/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell13dark = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190613dark/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell14 = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190614/*/*_focalcell.csv', pixels=964.019, mm=0.7)
+cell14dark = analyzecell_folder('/Volumes/GoogleDrive/My Drive/data/hsmis/nutrients/20190614dark/*/*_focalcell.csv', pixels=964.019, mm=0.7)
 
 
 # take results from above and combine into lists so that the mean, std, and SEM can be quickly found for each day (because a day has many tracks)
-paths = [path4, path6, path7, path10, path11, path12, path12dark]
-cells = [cell4, cell6, cell7, cell10, cell11, cell12, cell12dark]
-dates = ['day0 inoc', 'day2 f/40', 'day3 f/2', 'day6 f/40', 'day7 f/2', 'day8 f/40', 'day8 f/40 dark']
+paths = [path4, path6, path7, path10, path11, path12, path12dark,
+    path13, path13dark, path14, path14dark]
+cells = [cell4, cell6, cell7, cell10, cell11, cell12, cell12dark,
+    cell13, cell13dark, cell14, cell14dark]
+dates = ['day0 inoc', 'day2 f/40', 'day3 f/2', 'day6 f/40', 'day7 f/2', 'day8 f/40', 'day8 f/40 dark',
+    'day9 f/2', 'day9 f/2 dark', 'day10 f/40', 'day10 f/40 dark']
 
 tswim_means = [np.mean(df['tswim']) for df in paths]
 lswim_means = [np.mean(df['lswim']) for df in paths]
@@ -78,4 +89,4 @@ plt.ylabel('Uave (mm/s)')
 plt.show()
 
 plt.bar(range(0, np.shape(length_means)[0]), length_means, tick_label=dates, yerr=length_sem)
-plt.ylabel('NGDR')
+plt.ylabel('Cell length (mm)')
