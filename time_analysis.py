@@ -1,4 +1,4 @@
-# Wanted to see whether there is a correlation between swimming speed and time of recording in the nutrient experiment
+# Wanted to see whether there is a correlation between swimming speed and time of recording in the Feb/Mar 2019 nutrient experiment
 # Uses the generic functions defined in analyzehsmis.py
 
 # lens conversion: 964.019 pixels = 0.7 mm
