@@ -1,6 +1,7 @@
-# wanted to see if there was a bias in the net path of cells in the June 2019 nutrient experiment
-# plots the change in cell's coordinates with respect to a centered origin
-# in response to qualitative observations of convection
+# Wanted to see if there was a bias in the net path of cells in the June 2019 nutrient experiment
+# Plots the change in cell's coordinates with respect to a centered origin
+    # e.g., (1,-4) would mean that the cell hasn't moved 1 unit right and 4 units down
+# In response to qualitative observations of convection
 
 import pandas as pd
 from glob import glob
